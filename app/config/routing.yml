@@ -1,0 +1,11 @@
+ember:
+    resource: "@EmberBundle/Controller/"
+    type:     annotation
+    prefix:  /
+
+
+prueba:
+    resource: "@PruebaBundle/Resources/config/routing.yml"
+    prefix:   /prueba
+
+

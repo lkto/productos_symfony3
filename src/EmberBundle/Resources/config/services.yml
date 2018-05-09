@@ -1,0 +1,4 @@
+services:
+#    ember.example:
+#        class: EmberBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

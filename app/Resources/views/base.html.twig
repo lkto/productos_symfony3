@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+          <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <title>{% block title %}Productos{% endblock %}</title>
+        {% block stylesheets %}
+
+        <link href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+
+        <link href="{{ asset('vendor/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+
+        <link href="{{ asset('vendor/datatables/dataTables.bootstrap4.css') }}" rel="stylesheet">
+
+        <link href="{{ asset('css/sb-admin.css') }}" rel="stylesheet">
+
+        <link href="{{ asset('css/sb-admin.css') }}" rel="stylesheet">
+
+        <link href="{{ asset('alert/css/alertify.css') }}" rel="stylesheet">
+        
+        <style type="text/css">
+        .subMenu{
+        padding-bottom: 0px !important;
+        padding-top: 0px !important;
+        }
+        .nav-link{
+        padding-bottom: 8px !important;
+        padding-top: 8px !important;
+        }
+
+        
+         </style>
+
+        {% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body class="fixed-nav sticky-footer " id="page-top">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+    <a class="navbar-brand" href="/">Productos</a>
+
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+          <a class="nav-link" href="/">
+            <i class="fa fa-fw fa-dashboard"></i>
+            <span class="nav-link-text">Productos</span>
+          </a>
+        </li>
+
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+          <a class="nav-link" href="/marca">
+            <i class="fa fa-fw fa-dashboard"></i>
+            <span class="nav-link-text">Marca</span>
+          </a>
+        </li>
+
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+          <a class="nav-link" href="/categoria">
+            <i class="fa fa-fw fa-dashboard"></i>
+            <span class="nav-link-text">Categoria</span>
+          </a>
+        </li>
+        
+      </ul>
+      <ul class="navbar-nav sidenav-toggler">
+        <li class="nav-item">
+          <a class="nav-link text-center" id="sidenavToggler">
+            <i class="fa fa-fw fa-angle-left"></i>
+          </a>
+        </li>
+      </ul>
+     
+    </div>
+  </nav>
+        {% block body %}
+        {% endblock %}
+        
+
+    <footer class="sticky-footer">
+      <div class="container">
+        <div class="text-center">
+          <small>Copyright © Your Website 2018</small>
+        </div>
+      </div>
+    </footer>
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fa fa-angle-up"></i>
+    </a>
+
+    {% block javascripts %}
+         <script src="{{ asset('vendor/jquery/jquery.min.js') }}" ></script>
+
+         <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}" ></script>
+
+         <script src="{{ asset('vendor/jquery-easing/jquery.easing.min.js') }}" ></script>
+
+         <script src="{{ asset('vendor/chart.js/Chart.min.js') }}" ></script>
+
+         <script src="{{ asset('vendor/datatables/jquery.dataTables.js') }}" ></script>
+
+         <script src="{{ asset('vendor/datatables/dataTables.bootstrap4.js') }}" ></script>
+
+         <script src="{{ asset('js/sb-admin.min.js') }}" ></script>
+
+         <script src="{{ asset('js/sb-admin-datatables.min.js') }}" ></script>
+
+         <script src="{{ asset('js/sb-admin-charts.min.js') }}" ></script>
+
+         <script src="{{ asset('alert/js/alertify.js') }}" ></script>
+    {% endblock %}
+    </body>
+</html>
+
+
+ 
+
+ 
+  
