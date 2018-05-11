@@ -1,0 +1,106 @@
+{% extends '::base.html.twig'%}
+
+
+{% block body %}
+
+<div class="content-wrapper">
+    <div class="container-fluid">
+      <!-- Breadcrumbs-->
+      <ol class="breadcrumb">
+     <li class="breadcrumb-item">
+          <a href="/">Productos</a>
+        </li> 
+        <li class="breadcrumb-item active">
+         Agregar productos</li>
+      </ol>
+      
+
+{% for flash_message in app.session.flashbag.get('warning') %}
+    <div class="alert alert-warning" role="alert">
+        {{ flash_message }}
+    </div>
+{% endfor %}
+
+<div class="container" id="form-datos">
+    <div class="card card-register mx-auto mt-5">
+      <div class="card-header">Registrar Productos</div>
+      <div class="card-body">
+      
+      {{ form_start(form) }}
+          <div class="form-group">
+            <div class="form-row">
+            	<div class="col-md-6">
+                <div class='input-group' style="margin-bottom: 8px;">
+                    
+
+                    {{ form_widget(form.code, {'attr': {'class':'form-control' , 'placeholder':'Ingresar codigo','minlength':'4' }}) }}
+                    
+                </div>
+               
+              </div>
+              <div class="col-md-6">
+                <div class='input-group' style="margin-bottom: 8px;">
+                    
+
+                    {{ form_widget(form.name, {'attr': {'class':'form-control' , 'placeholder':'Ingresar nombre'}}) }}
+                    
+                </div>
+               
+              </div>
+	
+              <div class="col-md-6" >
+                <div class='input-group ' style="margin-bottom: 8px;">
+                  
+
+                    {{ form_widget(form.description, {'attr': {'class':'form-control', 'placeholder':'Ingresar descripcion'}}) }}
+                    
+                </div>
+               
+              </div>
+
+               <div class="col-md-6">
+                <div class='input-group ' style="margin-bottom: 8px;">
+                    
+
+                    {{ form_widget(form.brand, {'attr': {'class':'form-control', 'placeholder':'Ingresar marca'}}) }}
+                    
+                </div>
+               
+              </div>
+
+              <div class="col-md-6">
+                <div class='input-group ' style="margin-bottom: 8px;">
+                   
+
+                    {{ form_widget(form.category, {'attr': {'class':'form-control', 'placeholder':'Ingresar categoria'}}) }}
+                    
+                </div>
+               
+              </div>
+
+              <div class="col-md-6">
+                <div class='input-group ' style="margin-bottom: 8px;">
+                   
+
+                    {{ form_widget(form.price, {'attr': {'class':'form-control', 'placeholder':'Ingresar precio'}}) }}
+                    
+                </div>
+               
+              </div>
+
+             
+              
+            </div>
+          </div>
+        {{ form_widget(form.Guardar, {'attr': {'class':'btn btn-primary', 'type':'submit'}}) }}
+        
+	{{ form_end(form) }}
+      </div>
+    </div>
+  </div>
+
+
+</div>
+</div>
+
+{% endblock %}

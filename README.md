@@ -1,4 +1,4 @@
-my_project_name
-===============
+prueba_synfony
+==============
 
-A Symfony project created on May 6, 2018, 4:20 am.
+A Symfony project created on May 11, 2018, 12:53 am.

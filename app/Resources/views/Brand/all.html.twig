@@ -1,0 +1,93 @@
+{% extends '::base.html.twig'%}
+
+
+{% block body %}
+
+<div class="content-wrapper">
+    <div class="container-fluid">
+      <!-- Breadcrumbs-->
+      <ol class="breadcrumb">
+       <!-- <li class="breadcrumb-item">
+          <a href="#">Reservas</a>
+        </li> -->
+        <li class="breadcrumb-item active">Marcas</li>
+      </ol>
+      
+
+{% for flash_message in app.session.flashbag.get('add') %}
+    <div class="alert alert-success" role="alert">
+        {{ flash_message }}
+    </div>
+{% endfor %}
+{% for flash_message in app.session.flashbag.get('delete') %}
+    <div class="alert alert-danger" role="alert">
+        {{ flash_message }}
+    </div>
+{% endfor %}
+{% for flash_message in app.session.flashbag.get('update') %}
+    <div class="alert alert-info" role="alert">
+        {{ flash_message }}
+    </div>
+{% endfor %}
+
+<div class="card mb-3">
+        <div class="card-header">
+          <i class="fa fa-table"></i>Marcas
+
+<div style="float: right;">
+
+          <a href="/brand/new" class='btn' style='background-color:transparent;color:black;'> 
+                    <i class="fa fa-plus-square"></i>
+                    Agregar Marcas
+                    </a>
+
+        </div>
+      </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+              <thead>
+                <tr>
+                  <th>Codigo </th>
+                  <th>Nombre</th>
+                  <th>Acciones</th>
+                  
+                </tr>
+              </thead>
+              <tfoot>
+                <tr>
+                  <th>Codigo </th>
+                  <th>Nombre</th>
+                  <th>Acciones</th>
+                </tr>
+              </tfoot>
+              <tbody>
+                
+                {% for brand in brand %}
+                <tr>
+					<td>{{brand.id}}</td>
+					<td>{{brand.name}}</td>
+					<td>
+                    <a href = "/brand/edit/{{brand.id}}" class='btn' style='background-color:transparent;color:black;'> 
+                    <i class="fa fa-sticky-note-o"></i>
+                    </a>
+                    <a href = "/brand/show/{{brand.id}}" class='btn' style='background-color:transparent;color:black;' > 
+                    <i class="fa fa-low-vision"></i>
+                    </a>
+                    <a href = "/brand/delete/{{brand.id}}" class='btn' style='background-color:transparent;color:black;'> 
+                    <i class="fa fa-remove"></i>
+                    </a>
+                  </td>
+				</tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="card-footer small text-muted">Ultima actualizacion ayer a las 11:59 PM</div>
+      </div>
+
+</div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends '::base.html.twig'%}
+
+
+{% block body %}
+
+<div class="content-wrapper">
+    <div class="container-fluid">
+      <!-- Breadcrumbs-->
+      <ol class="breadcrumb">
+     <li class="breadcrumb-item">
+          <a href="/marca">Marca</a>
+        </li> 
+        <li class="breadcrumb-item active">
+          Detalles marca</li>
+      </ol>
+      
+{% for flash_message in app.session.flashbag.get('warning') %}
+    <div class="alert alert-warning" role="alert">
+        {{ flash_message }}
+    </div>
+{% endfor %}
+      
+<div class="container" id="form-datos">
+    <div class="card card-register mx-auto mt-5">
+      <div class="card-header">Detalles marca</div>
+      <div class="card-body">
+      
+          <div class="form-group">
+            <div class="form-row">
+              <div class="col-md-12">
+                <label for="user">Nombre</label>
+                <p>{{brand.name}}</p>
+              </div>
+              
+            </div>
+          </div>
+          
+
+          
+
+          
+         
+      <a href="/brand/delete2/{{brand.id}}" class="btn btn-danger " > Eliminar </a>
+       <a href="/brand" class="btn btn-primary " > Regregar </a>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+{% endblock %}

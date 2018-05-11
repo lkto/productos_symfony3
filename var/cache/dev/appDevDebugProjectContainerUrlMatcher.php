@@ -100,144 +100,126 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
         }
 
-        // ember_nombre
-        if ($pathinfo === '/nombre') {
-            return array (  '_controller' => 'EmberBundle\\Controller\\DefaultController::nombreAction',  '_route' => 'ember_nombre',);
-        }
-
-        // ember_default_redireccion
-        if ($pathinfo === '/redireccion') {
-            return array (  '_controller' => 'EmberBundle\\Controller\\DefaultController::redireccionAction',  '_route' => 'ember_default_redireccion',);
-        }
-
-        // all_productos
-        if (rtrim($pathinfo, '/') === '') {
-            if (substr($pathinfo, -1) !== '/') {
-                return $this->redirect($pathinfo.'/', 'all_productos');
+        if (0 === strpos($pathinfo, '/brand')) {
+            // all_brand
+            if ($pathinfo === '/brand') {
+                return array (  '_controller' => 'AppBundle\\Controller\\BrandController::AllAction',  '_route' => 'all_brand',);
             }
 
-            return array (  '_controller' => 'EmberBundle\\Controller\\EventosController::AllAction',  '_route' => 'all_productos',);
+            // new_brand
+            if ($pathinfo === '/brand/new') {
+                return array (  '_controller' => 'AppBundle\\Controller\\BrandController::newAction',  '_route' => 'new_brand',);
+            }
+
+            // edit_brand
+            if (0 === strpos($pathinfo, '/brand/edit') && preg_match('#^/brand/edit/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'edit_brand')), array (  '_controller' => 'AppBundle\\Controller\\BrandController::EditAction',));
+            }
+
+            // update_brand
+            if (0 === strpos($pathinfo, '/brand/update') && preg_match('#^/brand/update/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'update_brand')), array (  '_controller' => 'AppBundle\\Controller\\BrandController::UpdateAction',));
+            }
+
+            // show_brand
+            if (0 === strpos($pathinfo, '/brand/show') && preg_match('#^/brand/show/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'show_brand')), array (  '_controller' => 'AppBundle\\Controller\\BrandController::showAction',));
+            }
+
+            if (0 === strpos($pathinfo, '/brand/delete')) {
+                // delete_brand
+                if (preg_match('#^/brand/delete/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'delete_brand')), array (  '_controller' => 'AppBundle\\Controller\\BrandController::deleteAction',));
+                }
+
+                // delete_brand2
+                if (0 === strpos($pathinfo, '/brand/delete2') && preg_match('#^/brand/delete2/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'delete_brand2')), array (  '_controller' => 'AppBundle\\Controller\\BrandController::eliminarAction',));
+                }
+
+            }
+
         }
 
-        // new_productos
+        if (0 === strpos($pathinfo, '/category')) {
+            // all_category
+            if ($pathinfo === '/category') {
+                return array (  '_controller' => 'AppBundle\\Controller\\CategoryController::AllAction',  '_route' => 'all_category',);
+            }
+
+            // new_category
+            if ($pathinfo === '/category/new') {
+                return array (  '_controller' => 'AppBundle\\Controller\\CategoryController::newAction',  '_route' => 'new_category',);
+            }
+
+            // edit_category
+            if (0 === strpos($pathinfo, '/category/edit') && preg_match('#^/category/edit/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'edit_category')), array (  '_controller' => 'AppBundle\\Controller\\CategoryController::EditAction',));
+            }
+
+            // update_category
+            if (0 === strpos($pathinfo, '/category/update') && preg_match('#^/category/update/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'update_category')), array (  '_controller' => 'AppBundle\\Controller\\CategoryController::UpdateAction',));
+            }
+
+            // show_category
+            if (0 === strpos($pathinfo, '/category/show') && preg_match('#^/category/show/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'show_category')), array (  '_controller' => 'AppBundle\\Controller\\CategoryController::showAction',));
+            }
+
+            if (0 === strpos($pathinfo, '/category/delete')) {
+                // delete_category
+                if (preg_match('#^/category/delete/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'delete_category')), array (  '_controller' => 'AppBundle\\Controller\\CategoryController::deleteAction',));
+                }
+
+                // delete_category2
+                if (0 === strpos($pathinfo, '/category/delete2') && preg_match('#^/category/delete2/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'delete_category2')), array (  '_controller' => 'AppBundle\\Controller\\CategoryController::eliminarAction',));
+                }
+
+            }
+
+        }
+
+        // all_products
+        if (rtrim($pathinfo, '/') === '') {
+            if (substr($pathinfo, -1) !== '/') {
+                return $this->redirect($pathinfo.'/', 'all_products');
+            }
+
+            return array (  '_controller' => 'AppBundle\\Controller\\ProductController::AllAction',  '_route' => 'all_products',);
+        }
+
+        // new_products
         if ($pathinfo === '/new') {
-            return array (  '_controller' => 'EmberBundle\\Controller\\EventosController::newAction',  '_route' => 'new_productos',);
-        }
-
-        // edit_productos
-        if (0 === strpos($pathinfo, '/edit') && preg_match('#^/edit/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-            return $this->mergeDefaults(array_replace($matches, array('_route' => 'edit_productos')), array (  '_controller' => 'EmberBundle\\Controller\\EventosController::EditAction',));
-        }
-
-        // update_productos
-        if (0 === strpos($pathinfo, '/update') && preg_match('#^/update/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-            return $this->mergeDefaults(array_replace($matches, array('_route' => 'update_productos')), array (  '_controller' => 'EmberBundle\\Controller\\EventosController::UpdateAction',));
+            return array (  '_controller' => 'AppBundle\\Controller\\ProductController::newAction',  '_route' => 'new_products',);
         }
 
         // show_productos
         if (0 === strpos($pathinfo, '/show') && preg_match('#^/show/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-            return $this->mergeDefaults(array_replace($matches, array('_route' => 'show_productos')), array (  '_controller' => 'EmberBundle\\Controller\\EventosController::showAction',));
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'show_productos')), array (  '_controller' => 'AppBundle\\Controller\\ProductController::showAction',));
         }
 
-        // delete_productos
-        if (0 === strpos($pathinfo, '/delete') && preg_match('#^/delete/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-            return $this->mergeDefaults(array_replace($matches, array('_route' => 'delete_productos')), array (  '_controller' => 'EmberBundle\\Controller\\EventosController::deleteAction',));
+        // edit_product
+        if (0 === strpos($pathinfo, '/edit') && preg_match('#^/edit/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'edit_product')), array (  '_controller' => 'AppBundle\\Controller\\ProductController::EditAction',));
         }
 
-        // eliminar_productos
-        if (0 === strpos($pathinfo, '/eliminar') && preg_match('#^/eliminar/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-            return $this->mergeDefaults(array_replace($matches, array('_route' => 'eliminar_productos')), array (  '_controller' => 'EmberBundle\\Controller\\EventosController::eliminarAction',));
+        // update_products
+        if (0 === strpos($pathinfo, '/update') && preg_match('#^/update/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'update_products')), array (  '_controller' => 'AppBundle\\Controller\\ProductController::UpdateAction',));
         }
 
-        if (0 === strpos($pathinfo, '/categoria')) {
-            // all_categoria
-            if ($pathinfo === '/categoria') {
-                return array (  '_controller' => 'EmberBundle\\Controller\\categoriaController::AllAction',  '_route' => 'all_categoria',);
+        if (0 === strpos($pathinfo, '/delete')) {
+            // delete_productos
+            if (preg_match('#^/delete/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'delete_productos')), array (  '_controller' => 'AppBundle\\Controller\\ProductController::deleteAction',));
             }
 
-            // new_categoria
-            if ($pathinfo === '/categoria/new') {
-                return array (  '_controller' => 'EmberBundle\\Controller\\categoriaController::newAction',  '_route' => 'new_categoria',);
-            }
-
-            // edit_categoria
-            if (0 === strpos($pathinfo, '/categoria/edit') && preg_match('#^/categoria/edit/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'edit_categoria')), array (  '_controller' => 'EmberBundle\\Controller\\categoriaController::EditAction',));
-            }
-
-            // update_categoria
-            if (0 === strpos($pathinfo, '/categoria/update') && preg_match('#^/categoria/update/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'update_categoria')), array (  '_controller' => 'EmberBundle\\Controller\\categoriaController::UpdateAction',));
-            }
-
-            // show_categoria
-            if (0 === strpos($pathinfo, '/categoria/show') && preg_match('#^/categoria/show/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'show_categoria')), array (  '_controller' => 'EmberBundle\\Controller\\categoriaController::showAction',));
-            }
-
-            // delete_categoria
-            if (0 === strpos($pathinfo, '/categoria/delete') && preg_match('#^/categoria/delete/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'delete_categoria')), array (  '_controller' => 'EmberBundle\\Controller\\categoriaController::deleteAction',));
-            }
-
-            // eliminar_categoria
-            if (0 === strpos($pathinfo, '/categoria/eliminar') && preg_match('#^/categoria/eliminar/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'eliminar_categoria')), array (  '_controller' => 'EmberBundle\\Controller\\categoriaController::eliminarAction',));
-            }
-
-        }
-
-        if (0 === strpos($pathinfo, '/marca')) {
-            // all_marca
-            if ($pathinfo === '/marca') {
-                return array (  '_controller' => 'EmberBundle\\Controller\\marcaController::AllAction',  '_route' => 'all_marca',);
-            }
-
-            // new_marca
-            if ($pathinfo === '/marca/new') {
-                return array (  '_controller' => 'EmberBundle\\Controller\\marcaController::newAction',  '_route' => 'new_marca',);
-            }
-
-            // edit_marca
-            if (0 === strpos($pathinfo, '/marca/edit') && preg_match('#^/marca/edit/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'edit_marca')), array (  '_controller' => 'EmberBundle\\Controller\\marcaController::EditAction',));
-            }
-
-            // update_marca
-            if (0 === strpos($pathinfo, '/marca/update') && preg_match('#^/marca/update/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'update_marca')), array (  '_controller' => 'EmberBundle\\Controller\\marcaController::UpdateAction',));
-            }
-
-            // show_marca
-            if (0 === strpos($pathinfo, '/marca/show') && preg_match('#^/marca/show/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'show_marca')), array (  '_controller' => 'EmberBundle\\Controller\\marcaController::showAction',));
-            }
-
-            // delete_marca
-            if (0 === strpos($pathinfo, '/marca/delete') && preg_match('#^/marca/delete/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'delete_marca')), array (  '_controller' => 'EmberBundle\\Controller\\marcaController::deleteAction',));
-            }
-
-            // eliminar_marca
-            if (0 === strpos($pathinfo, '/marca/eliminar') && preg_match('#^/marca/eliminar/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'eliminar_marca')), array (  '_controller' => 'EmberBundle\\Controller\\marcaController::eliminarAction',));
-            }
-
-        }
-
-        if (0 === strpos($pathinfo, '/prueba')) {
-            // prueba_homepage
-            if (rtrim($pathinfo, '/') === '/prueba') {
-                if (substr($pathinfo, -1) !== '/') {
-                    return $this->redirect($pathinfo.'/', 'prueba_homepage');
-                }
-
-                return array (  '_controller' => 'PruebaBundle\\Controller\\DefaultController::indexAction',  '_route' => 'prueba_homepage',);
-            }
-
-            // prueba_nombre
-            if (0 === strpos($pathinfo, '/prueba/nombre') && preg_match('#^/prueba/nombre/(?P<nPila>[^/]++)$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'prueba_nombre')), array (  '_controller' => 'PruebaBundle\\Controller\\DefaultController::nombreAction',));
+            // delete_productos2
+            if (0 === strpos($pathinfo, '/delete2') && preg_match('#^/delete2/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'delete_productos2')), array (  '_controller' => 'AppBundle\\Controller\\ProductController::eliminarAction',));
             }
 
         }

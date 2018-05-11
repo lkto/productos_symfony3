@@ -1,0 +1,46 @@
+{% extends '::base.html.twig'%}
+
+
+{% block body %}
+
+<div class="content-wrapper">
+    <div class="container-fluid">
+      <!-- Breadcrumbs-->
+      <ol class="breadcrumb">
+     <li class="breadcrumb-item">
+          <a href="/categoria">Categoria</a>
+        </li> 
+        <li class="breadcrumb-item active">
+          Detalles categoria</li>
+      </ol>
+      
+<div class="container" id="form-datos">
+    <div class="card card-register mx-auto mt-5">
+      <div class="card-header">Detalles categoria</div>
+      <div class="card-body">
+      
+          <div class="form-group">
+            <div class="form-row">
+              <div class="col-md-12">
+                <label for="user">Nombre</label>
+                <p>{{category.name}}</p>
+              </div>
+              
+            </div>
+          </div>
+          
+
+          
+
+          
+         
+      
+       <a href="/category" class="btn btn-primary " > Regregar </a>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+{% endblock %}

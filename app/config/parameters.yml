@@ -2,11 +2,11 @@
 parameters:
     database_host: 127.0.0.1
     database_port: null
-    database_name: productos
+    database_name: proof
     database_user: root
     database_password: null
     mailer_transport: smtp
     mailer_host: 127.0.0.1
     mailer_user: null
     mailer_password: null
-    secret: 3725524fc20401b4227bcb5973a1529c690c9188
+    secret: 5acf92006d06e7a5afa23d851de5a802a8244d46
